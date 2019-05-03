@@ -1,6 +1,6 @@
 public class Main {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws  Exception{
         Philosopher philosopher[] = new Philosopher[5];
         Object fork[] = new Object[5];
 
