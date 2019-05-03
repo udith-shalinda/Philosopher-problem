@@ -3,7 +3,7 @@
 public class Philosopher implements Runnable{
     private Object leftFork;
     private Object rightFork;
-    private int food = 10;
+    private int hungryLevel = 10;
 
     public Philosopher(Object leftFork,Object rightFork){
         this.leftFork= leftFork;
@@ -20,16 +20,16 @@ public class Philosopher implements Runnable{
     @Override
     public void run() {
         try{
-            while(food>=0){
-                doAction(" : Thinking ,food left :" +this.food);
+            while(hungryLevel>0){
+                doAction("Hungry level : "+this.hungryLevel+"   : Thinking" );
                 synchronized (leftFork){
-                    doAction(" : Picked up left fork");
+                    doAction("Hungry level : "+this.hungryLevel+" : Picked up left fork");
                     synchronized (rightFork){
-                        doAction(" : Picked up right fork and started eating ,food left :" + this.food);
-                        doAction(" : Put down right fork");
-                        this.food-=1;
+                        doAction("Hungry level : "+this.hungryLevel+" : Picked up right fork and started eating" );
+                        doAction("Hungry level : "+this.hungryLevel+" : Put down right fork");
+                        this.hungryLevel-=1;
                     }
-                    doAction(" : Put down left fork and start thinking");
+                    doAction("Hungry level : "+this.hungryLevel+" : Put down left fork and start thinking");
                 }
             }
         }catch(InterruptedException e){
