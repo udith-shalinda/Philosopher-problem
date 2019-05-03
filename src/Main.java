@@ -11,7 +11,11 @@ public class Main {
         for(int i=0;i<philosopher.length;i++){
             Object leftFork = fork[i];
             Object rightFork = fork[(i+1)%5];
-            philosopher[i] = new Philosopher(leftFork,rightFork);
+            if(i == philosopher.length-1){
+                philosopher[i] = new Philosopher(leftFork,rightFork);
+            }else{
+                philosopher[i] = new Philosopher(rightFork,leftFork);
+            }
             Thread t = new Thread(philosopher[i] ," Philosopher "+(i+1));
             t.start();
 
